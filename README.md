@@ -1,2 +1,2 @@
-# domaci
-Domaci zadaci iz strucnih predmeta
+# Domaci iz strucnih predmeta
+* Principi programiranja
