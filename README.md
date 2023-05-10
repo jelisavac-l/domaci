@@ -1,7 +1,14 @@
 # Domaći zadaci iz stručnih predmeta
 Luka Jelisavac 2022/0554
 ## Principi Programiranja: Seminarski rad 📝
-### Uputstvo za instalaciju razvojnog okruženja
+### O Projektu 🔰
+Rezultat projekta - edukativni softver za prikaz geometrijskih figura (dvodimenzionih oblika) i upoznavanje korisnika sa njihovim svojstvima kao i primenom teorema za izračunavanje određenih dužina tih figura.
+
+#### Tehnički zahtevi 📜
+* Kod pisan u programskom jeziku C, koji iscrtava geometrijske figure, izračunava dužine i objašnjava postupak, kao i vrši operacije translacije i rotacije nad njima.
+* Dokumentacija pisana ćiriličnim pismom, na papiru formata A4 fontovima Times New Roman 12 (za paragrafe) i Consolas 12 (za izvorni kod). Margina sa leve strane 2+1, a ostale po 2 cm.
+
+### Uputstvo za instalaciju razvojnog okruženja 🔨
 1. Instalirati MinGW-ov C/C++ kompajler
 2. Instalirati odgovarajuću `SDL2` biblioteku, namenjenu za C/C++ i MinGW kompajler
 3. Locirati folder `.\i686-w64-mingw32`, u daljem tekstu folder (uz predpostavku da se kod kompajlira za 32-bitne sisteme)
