@@ -28,6 +28,7 @@ void printc(const char* output, int color);   // Stampanje u boji
 void start();
 void logo();
 void linijaPoLinija(const char* path);
+int selekcija();
 
 
 #endif

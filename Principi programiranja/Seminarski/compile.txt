@@ -1,1 +1,1 @@
-g++ -o testnoav.exe main.c kki.c -lmingw32 -lSDL2main -lSDL2 my.res
+g++ -o testnoav.exe main.c kki.c trougao.c -lmingw32 -lSDL2main -lSDL2 my.res

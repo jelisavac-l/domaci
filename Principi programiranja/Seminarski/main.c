@@ -1,5 +1,6 @@
 #include "SDL2/SDL.h"
 #include "kki.h"
+#include "trougao.h"
 #include <stdio.h>
 #include <stdbool.h>
 
@@ -64,6 +65,8 @@ bool Initialize(void)
 
     logo();
     start();
+    getchar();
+    int izbor = selekcija();
 
 
     return true;
@@ -75,13 +78,8 @@ void Update(float elapsed)
     SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255); // "Clear Color"
     SDL_RenderClear(renderer);
 
-    SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
-    SDL_Rect ballrect = {
-        .x = WIDTH / 2 - BALL_SIZE / 2,
-        .y = HEIGHT / 2 - BALL_SIZE / 2,
-        .w = BALL_SIZE,
-        .h = BALL_SIZE};
-    SDL_RenderFillRect(renderer, &ballrect);
+    if( SDL_RenderGeometry(renderer, NULL, tackeTrougla, 3, NULL, 0) < 0 ) {SDL_Log("%s\n", SDL_GetError());}
+
     SDL_RenderPresent(renderer);
 }
 void Shutdown(void)
