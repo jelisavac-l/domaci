@@ -1,4 +1,5 @@
 #include "SDL2/SDL.h"
+#include "kki.h"
 #include <stdio.h>
 #include <stdbool.h>
 
@@ -15,44 +16,36 @@ void Shutdown(void);
 
 int main(int argc, char *args[])
 {
-    atexit(Shutdown);   // :)
+    atexit(Shutdown); // :)
 
-    if(!Initialize())
+    // Inicijalizacija pocetnih parametara
+    if (!Initialize())
     {
         exit(1);
     }
 
-    SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255); // "Clear Color"
-    SDL_RenderClear(renderer);
-    
-    SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
-    SDL_Rect ballrect = {
-        .x = WIDTH/2 - BALL_SIZE/2,
-        .y = HEIGHT/2 - BALL_SIZE/2,
-        .w = BALL_SIZE,
-        .h = BALL_SIZE
-    };
-    SDL_RenderFillRect(renderer, &ballrect);
-    SDL_RenderPresent(renderer);
-
-    
-
-    // Glavni loop
+    // Update() funkcija, deltaTime i obrada eventova
     bool run = true;
-    while(run)
+    while (run)
     {
+        Uint32 lastTick = SDL_GetTicks();
         SDL_Event ev;
-        while(SDL_PollEvent(&ev))   // Obrada eventova, isto kao u SFMLu
+        while (SDL_PollEvent(&ev)) // Obrada eventova, isto kao u SFMLu
         {
-            switch(ev.type)
+            switch (ev.type)
             {
-                case SDL_QUIT:  // Event kliktanja na X dugme
-                {
-                    run = false;
-                    break;
-                }
+            case SDL_QUIT: // Event kliktanja na X dugme
+            {
+                run = false;
+                break;
+            }
             }
         }
+        Uint32 curTick = SDL_GetTicks();
+        Uint32 diff = curTick - lastTick;
+        float elapsed = diff / 1000.0f;
+        Update(elapsed);
+        lastTick = curTick;
     }
 
     return 0;
@@ -60,31 +53,48 @@ int main(int argc, char *args[])
 
 bool Initialize(void)
 {
-    window = SDL_CreateWindow("Geo554", 100, 100, WIDTH, HEIGHT, SDL_WINDOW_SHOWN);
-    renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
-    SDL_Init(SDL_INIT_EVERYTHING);  // Ukljucivanje svih SDL podsistema
-    if(window == NULL)
+    window = SDL_CreateWindow("Geo554", 640, 100, WIDTH, HEIGHT, SDL_WINDOW_SHOWN);
+    renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
+    SDL_Init(SDL_INIT_EVERYTHING); // Ukljucivanje svih SDL podsistema
+    if (window == NULL)
     {
         printf("Greska prilikom otvaranja prozora za skicu: %s\n", SDL_GetError());
         return false;
     }
+
+    logo();
+    start();
+
+
     return true;
 }
+
 void Update(float elapsed)
 {
 
+    SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255); // "Clear Color"
+    SDL_RenderClear(renderer);
+
+    SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
+    SDL_Rect ballrect = {
+        .x = WIDTH / 2 - BALL_SIZE / 2,
+        .y = HEIGHT / 2 - BALL_SIZE / 2,
+        .w = BALL_SIZE,
+        .h = BALL_SIZE};
+    SDL_RenderFillRect(renderer, &ballrect);
+    SDL_RenderPresent(renderer);
 }
 void Shutdown(void)
 {
     // Moze se desiti greska pre inicijalizacije windowa i renderera,
     // zato valja proveriti za svaki slucaj.
-    if(renderer)
+    if (renderer)
     {
         SDL_DestroyRenderer(renderer);
     }
-    if(window)
+    if (window)
     {
-       SDL_DestroyWindow(window); 
+        SDL_DestroyWindow(window);
     }
     SDL_Quit();
 }
