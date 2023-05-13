@@ -6,7 +6,6 @@
 
 const int WIDTH = 640;
 const int HEIGHT = 480;
-const int BALL_SIZE = 80;
 
 SDL_Window *window = NULL;
 SDL_Renderer *renderer = NULL;
@@ -35,11 +34,11 @@ int main(int argc, char *args[])
         {
             switch (ev.type)
             {
-            case SDL_QUIT: // Event kliktanja na X dugme
-            {
-                run = false;
-                break;
-            }
+                case SDL_QUIT: // Event kliktanja na X dugme
+                {
+                    run = false;
+                    break;
+                }
             }
         }
         Uint32 curTick = SDL_GetTicks();
@@ -65,8 +64,8 @@ bool Initialize(void)
 
     logo();
     start();
-    getchar();
-    int izbor = selekcija();
+    //getchar();
+    //int izbor = selekcija();
 
 
     return true;
@@ -78,7 +77,8 @@ void Update(float elapsed)
     SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255); // "Clear Color"
     SDL_RenderClear(renderer);
 
-    if( SDL_RenderGeometry(renderer, NULL, tackeTrougla, 3, NULL, 0) < 0 ) {SDL_Log("%s\n", SDL_GetError());}
+    
+    updateTrougao(renderer, elapsed);
 
     SDL_RenderPresent(renderer);
 }
@@ -86,6 +86,7 @@ void Shutdown(void)
 {
     // Moze se desiti greska pre inicijalizacije windowa i renderera,
     // zato valja proveriti za svaki slucaj.
+    printc("Dovidjenja!\n",S_CRVENA);
     if (renderer)
     {
         SDL_DestroyRenderer(renderer);
