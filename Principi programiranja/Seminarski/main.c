@@ -53,7 +53,7 @@ int main(int argc, char *args[])
 
 bool Initialize(void)
 {
-    window = SDL_CreateWindow("Geo554", 720, 100, WIDTH, HEIGHT, SDL_WINDOW_SHOWN);
+    window = SDL_CreateWindow("Geo554", 1280, 100, WIDTH, HEIGHT, SDL_WINDOW_SHOWN);
     renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
     SDL_Init(SDL_INIT_EVERYTHING); // Ukljucivanje svih SDL podsistema
     if (window == NULL)
@@ -64,8 +64,8 @@ bool Initialize(void)
 
     logo();
     start();
-    //getchar();
-    //int izbor = selekcija();
+    getchar();
+    int izbor = selekcija();
 
 
     return true;
@@ -77,7 +77,7 @@ void Update(float elapsed)
     SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255); // "Clear Color"
     SDL_RenderClear(renderer);
 
-    
+
     updateTrougao(renderer, elapsed);
 
     SDL_RenderPresent(renderer);

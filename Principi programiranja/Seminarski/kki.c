@@ -1,5 +1,5 @@
 #include "kki.h"
-#include <stdio.h>
+
 
 void printc(const char* output, int color) 
 {
@@ -54,9 +54,9 @@ int selekcija()
     printf("Odaberite jedno od ponudjenih:\n");
     printc("### TEORIJA ###\n", S_ZUTA);
     printf("[1] Trougao\n");
-    printf("[N/A] Trougao: jednakostranicni\n");
-    printf("[N/A] Trougao: jednakokraki\n");
-    printf("[N/A] Trougao: pravougli\n\n");
+    printc("[N/A] Trougao: jednakostranicni\n", SIVA);
+    printc("[N/A] Trougao: jednakokraki\n", SIVA);
+    printc("[N/A] Trougao: pravougli\n\n", SIVA);
 
     // printf("[5] Cetvorougao\n");
     // printf("[6] Cetvorougao: kvadrat\n");
@@ -67,10 +67,10 @@ int selekcija()
     // printf("[11] Cetvorougao: deltoid\n");
 
     printc("### KALKULATOR ###\n", S_ZUTA);
-    printf("[N/A] Trougao\n");
-    printf("[N/A] Trougao: jednakostranicni\n");
-    printf("[N/A] Trougao: jednakokraki\n");
-    printf("[N/A] Trougao: pravougli\n");
+    printc("[N/A] Trougao\n", SIVA);
+    printc("[N/A] Trougao: jednakostranicni\n", SIVA);
+    printc("[N/A] Trougao: jednakokraki\n", SIVA);
+    printc("[N/A] Trougao: pravougli\n", SIVA);
 
     // printf("[16] Cetvorougao\n");
     // printf("[17] Cetvorougao: pravougaonik\n");

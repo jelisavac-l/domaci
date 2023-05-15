@@ -24,3 +24,8 @@ Rezultat projekta - edukativni softver za prikaz geometrijskih figura (dvodimenz
 Kao editor teksta najbolje je koristiti VS Code, mada alternative poput Notepad++a, Vim-a i Nano-a su potpuno legitimne opcije.
 Kontrolna komanda za kompajliranje koda: 
 `g++ -o test.exe test.c -lmingw32 -lSDL2main -lSDL2`
+
+### To Do 📌
+* Završiti ceo trougao (najkasnije do 16.05)
+* Napraviti jedinstvenu funkciju za translaciju tačke
+* Napraviti funkciju za translaciju vrednosti boje tačke

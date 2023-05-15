@@ -1,9 +1,12 @@
 #ifndef TROUGAO_H
 #define TROUGAO_H
 
+#define SPEED 2.0f
+
 #include <stdio.h>
 #include "SDL2/SDL.h"
 #include "kki.h"
+#include "geometrija.h"
 
 static SDL_Color bojeTrougla[3] =
     {
@@ -38,8 +41,9 @@ static SDL_Vertex tr[3] =
     }
 };
 
-
 void initTrougao();
+// Kasnije povezati u jednu funkciju
+void translacijaX(SDL_Point *P, SDL_Point Dest, float dT);
 void updateTrougao(SDL_Renderer* renderer, float dT);
 
 #endif

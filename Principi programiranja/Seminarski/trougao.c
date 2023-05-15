@@ -1,19 +1,28 @@
 #include "trougao.h"
+
+void translacijaX(SDL_FPoint *P, SDL_FPoint Dest, float dT)
+{
+    if(P->x < Dest.x)
+    {
+        P->x += SPEED;
+    }
+    else if(P->x > Dest.x)
+    {
+        P->x -= SPEED;
+    }
+}
+
 void updateTrougao(SDL_Renderer* renderer, float dT)
 {
-    // Jednostavna animacija (4 sata citanja dokumentacije kasnije...)
-    static float smer = 1.0f;
-    if(tr[0].position.x > 640.0f)
+    bool instrukcije[3] = {true, false, false};
+    if(instrukcije[0])
     {
-        tr[0].position.x = 634.0f;
-        smer = -smer;
+        translacijaX(&tr[0].position, {640.0f, 0.0f}, dT);
+        instrukcije[0] = false; // Zavrsena operacija 0
     }
-    if(tr[0].position.x < 0.0f)
-    {
-        tr[0].position.x = 1.5f;
-        smer *= -1;
-    }
-    tr[0].position.x += smer; // Bez dT dok ne shvatim gde koci....
+    
+
+    // Jednostavna animacija (4 sata citanja dokumentacije kasnije...)    
     if( SDL_RenderGeometry(renderer, NULL, tr, 3, NULL, 0) < 0 )
     {
         SDL_Log("%s\n", SDL_GetError());

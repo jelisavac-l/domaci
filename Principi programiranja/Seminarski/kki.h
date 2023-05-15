@@ -2,6 +2,7 @@
 #define KKI_H
 
 #include <windows.h>
+#include <stdio.h>
 
 // Boje✨ (learn.microsoft.com)
 

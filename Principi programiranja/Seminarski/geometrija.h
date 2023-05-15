@@ -4,8 +4,8 @@
 #include <math.h>
 #include "SDL2/SDL.h"
 
-float rastojanje(SDL_Point A, SDL_Point B);
-SDL_Point sredina(SDL_Point A, SDL_Point B);
+float rastojanje(SDL_FPoint A, SDL_FPoint B);
+SDL_FPoint sredina(SDL_FPoint A, SDL_FPoint B);
 
 
 #endif
