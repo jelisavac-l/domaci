@@ -8,6 +8,13 @@
 #include "kki.h"
 #include "geometrija.h"
 
+static char tekstovi[3][80 + 1] = 
+{
+    "TEXT 0",
+    "TEXT 1",
+    "TEXT 3"
+};
+
 static SDL_Color bojeTrougla[3] =
     {
         {255, 0, 0, 0xFF},
@@ -42,11 +49,8 @@ static SDL_Vertex tr[3] =
 };
 
 void initTrougao(); // Incijalne 
-
-// Kasnije povezati u jednu funkciju
-void translacijaX(SDL_FPoint *P, SDL_FPoint Dest, float dT);
-void translacijaY(SDL_FPoint *P, SDL_FPoint Dest, float dT);
-
-void updateTrougao(SDL_Renderer* renderer, float dT);
+void izvrsiKorak(bool korak);
+void translacija(SDL_FPoint *P, SDL_FPoint Dest, float dT, bool* korak);
+void updateTrougao(SDL_Renderer* renderer, float dT, bool* instrukcije);
 
 #endif

@@ -7,8 +7,13 @@
 const int WIDTH = 640;
 const int HEIGHT = 480;
 
+static int brojacKoraka = 0;
+
 SDL_Window *window = NULL;
 SDL_Renderer *renderer = NULL;
+
+// Niz instrukcija za sekvencionalno izvrsavanje operacija nad geometrijom
+static bool instrukcije[20];
 
 bool Initialize(void);
 void Update(float);
@@ -34,6 +39,19 @@ int main(int argc, char *args[])
         {
             switch (ev.type)
             {
+                case SDL_KEYDOWN:
+                {
+                    switch(ev.key.keysym.sym)
+                    {
+                        case SDLK_w:
+                        {
+                            printf("%s", tekstovi[brojacKoraka]);
+                            instrukcije[brojacKoraka] = true;
+                            brojacKoraka++;
+                        }
+                    }
+                    break;
+                }
                 case SDL_QUIT: // Event kliktanja na X dugme
                 {
                     run = false;
@@ -49,15 +67,13 @@ int main(int argc, char *args[])
         lastTick = curTick;
     }
 
-    system("PAUSE");
+    //system("PAUSE");
     return EXIT_SUCCESS;
 }
-// ⚓
+
 // Inicijalne operacije: videti dokumentaciju
 bool Initialize(void)
 {
-    // Niz instrukcija za sekvencionalno izvrsavanje operacija nad geometrijom
-    static bool instrukcije[20];
     // Za pocetak, sve na false: videti dokumentaciju
     for(int i = 0; i < 20; i++)
     {
@@ -90,7 +106,7 @@ void Update(float elapsed)
     SDL_RenderClear(renderer);
 
 
-    updateTrougao(renderer, elapsed);
+    updateTrougao(renderer, elapsed, instrukcije);
 
     SDL_RenderPresent(renderer);
 }
