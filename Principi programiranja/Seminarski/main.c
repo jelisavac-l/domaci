@@ -1,8 +1,8 @@
 #include "SDL2/SDL.h"
-#include "kki.h"
-#include "trougao.h"
+#include "kki.h"    // Konzolni korisnicki interfejs
+#include "trougao.h" // Trougao (Bice ih jos...)
 #include <stdio.h>
-#include <stdbool.h>
+#include <stdbool.h> // Prirodnije je raditi sa true/false nego sa 1/0
 
 const int WIDTH = 640;
 const int HEIGHT = 480;
@@ -41,6 +41,7 @@ int main(int argc, char *args[])
                 }
             }
         }
+        // deltaTime (koji iz nekog razloga stvara probleme...)
         Uint32 curTick = SDL_GetTicks();
         Uint32 diff = curTick - lastTick;
         float elapsed = diff / 1000.0f;
@@ -48,12 +49,23 @@ int main(int argc, char *args[])
         lastTick = curTick;
     }
 
-    return 0;
+    system("PAUSE");
+    return EXIT_SUCCESS;
 }
-
+// ⚓
+// Inicijalne operacije: videti dokumentaciju
 bool Initialize(void)
 {
-    window = SDL_CreateWindow("Geo554", 1280, 100, WIDTH, HEIGHT, SDL_WINDOW_SHOWN);
+    // Niz instrukcija za sekvencionalno izvrsavanje operacija nad geometrijom
+    static bool instrukcije[20];
+    // Za pocetak, sve na false: videti dokumentaciju
+    for(int i = 0; i < 20; i++)
+    {
+        instrukcije[i] = false;
+    }
+    // Inicijalizacija SDL-a: Prozor i SDL_Renderer
+    window = SDL_CreateWindow("Geo554", 1000, 100, WIDTH, HEIGHT, SDL_WINDOW_SHOWN);
+    // Bitovski AND operator? ... Videti dokumentaciju.
     renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
     SDL_Init(SDL_INIT_EVERYTHING); // Ukljucivanje svih SDL podsistema
     if (window == NULL)

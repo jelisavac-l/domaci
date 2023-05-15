@@ -14,16 +14,16 @@ void translacijaX(SDL_FPoint *P, SDL_FPoint Dest, float dT)
 
 void updateTrougao(SDL_Renderer* renderer, float dT)
 {
-    bool instrukcije[3] = {true, false, false};
-    if(instrukcije[0])
-    {
-        translacijaX(&tr[0].position, {640.0f, 0.0f}, dT);
-        instrukcije[0] = false; // Zavrsena operacija 0
-    }
+    /*
+    Niz instrukcija (videti main.c):
+    1. Ostrougli tr.
+    2. Pravougli tr.
+    3. Tupoguli tr.
+    */
     
 
     // Jednostavna animacija (4 sata citanja dokumentacije kasnije...)    
-    if( SDL_RenderGeometry(renderer, NULL, tr, 3, NULL, 0) < 0 )
+    if(SDL_RenderGeometry(renderer, NULL, tr, 3, NULL, 0) < 0 )
     {
         SDL_Log("%s\n", SDL_GetError());
         printc("ERR\n", CRVENA);

@@ -1,5 +1,6 @@
-# Domaći zadaci iz stručnih predmeta
+# Domaći zadaci iz stručnih predmeta ⚓
 Luka Jelisavac 2022/0554
+
 ## Principi Programiranja: Seminarski rad 📝
 ### O Projektu 🔰
 Rezultat projekta - edukativni softver za prikaz geometrijskih figura (dvodimenzionih oblika) i upoznavanje korisnika sa njihovim svojstvima kao i primenom teorema za izračunavanje određenih dužina tih figura.
@@ -29,3 +30,4 @@ Kontrolna komanda za kompajliranje koda:
 * Završiti ceo trougao (najkasnije do 16.05)
 * Napraviti jedinstvenu funkciju za translaciju tačke
 * Napraviti funkciju za translaciju vrednosti boje tačke
+* Dodati 554

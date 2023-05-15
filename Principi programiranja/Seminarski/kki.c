@@ -15,7 +15,7 @@ void start()
     printf("Seminarski rad iz predmeta ");
     printc("Principi programiranja\n", S_ZELENA);
     printf("Tema: ");
-    printc("N/A\n", S_ZELENA);
+    printc("Dogovoriti se za tacan naziv...\n", S_ZUTA);
     printf("Student: ");
     printc("Luka Jelisavac (2022-0554)\n", S_ZELENA);
     printf("Mentor: ");
@@ -78,7 +78,7 @@ int selekcija()
     // printf("[19] Cetvorougao: paralelogram\n");
     // printf("[20] Cetvorougao: trapez\n");
     // printf("[21] Cetvorougao: deltoid\n");        
-    printc("[0] Kraj rada\n", SIVA);
+    printc("[0] Kraj rada\n", S_LJUBICASTA);
     scanf("%d", sel);
     return sel;
 }

@@ -41,9 +41,12 @@ static SDL_Vertex tr[3] =
     }
 };
 
-void initTrougao();
+void initTrougao(); // Incijalne 
+
 // Kasnije povezati u jednu funkciju
-void translacijaX(SDL_Point *P, SDL_Point Dest, float dT);
+void translacijaX(SDL_FPoint *P, SDL_FPoint Dest, float dT);
+void translacijaY(SDL_FPoint *P, SDL_FPoint Dest, float dT);
+
 void updateTrougao(SDL_Renderer* renderer, float dT);
 
 #endif
