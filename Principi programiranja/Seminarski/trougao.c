@@ -42,6 +42,9 @@ void updateTrougao(SDL_Renderer* renderer, float dT, bool* instrukcije)
     0. Pravougli tr.
     1. Tupoguli tr.
     */
+
+
+    // Mozda for? Sta ako je potrebno vrsiti operaciju nad nekom drugom tackom???
     if(instrukcije[0]) {
         translacija(&tr[0].position, {640.0f, 0.0f}, dT, &instrukcije[0]);
     }
