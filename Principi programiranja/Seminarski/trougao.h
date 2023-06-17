@@ -50,7 +50,7 @@ static SDL_Vertex tr[3] =
 
 void initTrougao(); // Incijalne 
 void izvrsiKorak(bool korak);
-void translacija(SDL_FPoint *P, SDL_FPoint Dest, float dT, bool* korak);
-void updateTrougao(SDL_Renderer* renderer, float dT, bool* instrukcije);
+void translacija(SDL_FPoint *P, SDL_FPoint Dest, float dT, bool* korak, bool* anim);
+void updateTrougao(SDL_Renderer* renderer, float dT, bool* instrukcije, bool* anim);
 
 #endif

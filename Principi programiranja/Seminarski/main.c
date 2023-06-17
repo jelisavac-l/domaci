@@ -9,6 +9,8 @@ const int HEIGHT = 480;
 
 static int brojacKoraka = 0;
 
+static bool animacija_u_toku = false;
+
 SDL_Window *window = NULL;
 SDL_Renderer *renderer = NULL;
 
@@ -43,11 +45,14 @@ int main(int argc, char *args[])
                 {
                     switch(ev.key.keysym.sym)
                     {
-                        case SDLK_w:
+                        case SDLK_SPACE:
                         {
-                            printf("%s", tekstovi[brojacKoraka]);
-                            instrukcije[brojacKoraka] = true;
-                            brojacKoraka++;
+                            if(!animacija_u_toku)
+                            {
+                                printf("%s", tekstovi[brojacKoraka]);
+                                instrukcije[brojacKoraka] = true;
+                                brojacKoraka++;
+                            }
                         }
                     }
                     break;
@@ -74,6 +79,11 @@ int main(int argc, char *args[])
 // Inicijalne operacije: videti dokumentaciju
 bool Initialize(void)
 {
+    logo();
+    start();
+    getchar();
+    int izbor = selekcija();
+    
     // Za pocetak, sve na false: videti dokumentaciju
     for(int i = 0; i < 20; i++)
     {
@@ -90,12 +100,6 @@ bool Initialize(void)
         return false;
     }
 
-    logo();
-    start();
-    getchar();
-    int izbor = selekcija();
-
-
     return true;
 }
 
@@ -106,7 +110,7 @@ void Update(float elapsed)
     SDL_RenderClear(renderer);
 
 
-    updateTrougao(renderer, elapsed, instrukcije);
+    updateTrougao(renderer, elapsed, instrukcije, &animacija_u_toku);
 
     SDL_RenderPresent(renderer);
 }
