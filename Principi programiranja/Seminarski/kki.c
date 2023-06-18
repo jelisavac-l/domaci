@@ -15,7 +15,7 @@ void start()
     printf("Seminarski rad iz predmeta ");
     printc("Principi programiranja\n", S_ZELENA);
     printf("Tema: ");
-    printc("Dogovoriti se za tacan naziv...\n", S_ZUTA);
+    printc("Rad sa planimetrijskim figurama u programskom jeziku C\n", S_ZUTA);
     printf("Student: ");
     printc("Luka Jelisavac (2022-0554)\n", S_ZELENA);
     printf("Mentor: ");

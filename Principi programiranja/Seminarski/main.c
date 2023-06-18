@@ -49,7 +49,7 @@ int main(int argc, char *args[])
                         {
                             if(!animacija_u_toku)
                             {
-                                printf("%s", tekstovi[brojacKoraka]);
+                                puts(tekstovi[brojacKoraka]);
                                 instrukcije[brojacKoraka] = true;
                                 brojacKoraka++;
                             }
@@ -79,10 +79,10 @@ int main(int argc, char *args[])
 // Inicijalne operacije: videti dokumentaciju
 bool Initialize(void)
 {
-    logo();
-    start();
-    getchar();
-    int izbor = selekcija();
+    // logo();
+    // start();
+    // getchar();
+    // int izbor = selekcija();
     
     // Za pocetak, sve na false: videti dokumentaciju
     for(int i = 0; i < 20; i++)

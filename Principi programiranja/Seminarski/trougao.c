@@ -1,5 +1,8 @@
 #include "trougao.h"
 
+// Koliko bi ovo bilo samo jednostavnije u C++ sa klasama, polimorfizmom za sve ove funkcije i nasledjivanjem..
+
+
 // Verovatno postoji "elegantnije" resenje...
 void translacija(SDL_FPoint *P, SDL_FPoint Dest, float dT, bool* korak, bool* anim)
 {
@@ -37,6 +40,16 @@ void translacija(SDL_FPoint *P, SDL_FPoint Dest, float dT, bool* korak, bool* an
     */
 }
 
+void promenaBojeTr(SDL_Vertex *tr, SDL_Color *nizBoja, bool* instrukcije, bool* anim)
+{
+    *anim = true;
+    for(int i = 0; i < 3; i++) {
+        tr[i].color = nizBoja[i];
+    }
+    *instrukcije = false;
+    *anim = false;
+}
+
 void updateTrougao(SDL_Renderer* renderer, float dT, bool* instrukcije, bool* anim)
 {
     /*
@@ -56,6 +69,15 @@ void updateTrougao(SDL_Renderer* renderer, float dT, bool* instrukcije, bool* an
     }
     if(instrukcije[2]) {
         translacija(&tr[0].position, {320.0f, 0.0f}, dT, &instrukcije[2], anim);
+    }
+    if(instrukcije[3]) {
+        promenaBojeTr(tr, FULL_RED, &instrukcije[3], anim);
+    }
+    if(instrukcije[4]) {
+        promenaBojeTr(tr, FULL_GREEN, &instrukcije[4], anim);
+    }
+    if(instrukcije[5]) {
+        promenaBojeTr(tr, FULL_BLUE, &instrukcije[5], anim);
     }
     
     if(SDL_RenderGeometry(renderer, NULL, tr, 3, NULL, 0) < 0 )

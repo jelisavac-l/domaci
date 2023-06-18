@@ -1,18 +1,23 @@
 #ifndef TROUGAO_H
 #define TROUGAO_H
 
-#define SPEED 2.0f
+#define SPEED 4.0f
+#define COLOR_SPEED 5
 
 #include <stdio.h>
 #include "SDL2/SDL.h"
 #include "kki.h"
 #include "geometrija.h"
 
+static SDL_Color FULL_RED[3] = {{255, 0, 0, 0xFF}, {255, 0, 0, 0xFF}, {255, 0, 0, 0xFF}};
+static SDL_Color FULL_GREEN[3] = {{0, 255, 0, 0xFF}, {0, 255, 0, 0xFF}, {0, 255, 0, 0xFF}};
+static SDL_Color FULL_BLUE[3] = {{0, 0, 255, 0xFF}, {0, 0, 255, 0xFF}, {0, 0, 255, 0xFF}};
+
 static char tekstovi[3][80 + 1] = 
 {
-    "TEXT 0",
-    "TEXT 1",
-    "TEXT 3"
+    "Lorem ipsum dolor sit amet",
+    "Optimum pati quod est emendare non possis",
+    "Semper paratus",
 };
 
 static SDL_Color bojeTrougla[3] =
@@ -51,6 +56,7 @@ static SDL_Vertex tr[3] =
 void initTrougao(); // Incijalne 
 void izvrsiKorak(bool korak);
 void translacija(SDL_FPoint *P, SDL_FPoint Dest, float dT, bool* korak, bool* anim);
+void promenaBojeTr(SDL_Vertex *tr, SDL_Color *nizBoja, bool* instrukcije, bool *anim);
 void updateTrougao(SDL_Renderer* renderer, float dT, bool* instrukcije, bool* anim);
 
 #endif
