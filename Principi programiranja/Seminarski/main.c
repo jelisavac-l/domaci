@@ -1,5 +1,5 @@
 #include "SDL2/SDL.h"
-#include "kki.h"    // Konzolni korisnicki interfejs
+#include "kki.h"     // Konzolni korisnicki interfejs
 #include "trougao.h" // Trougao (Bice ih jos...)
 #include <stdio.h>
 #include <stdbool.h> // Prirodnije je raditi sa true/false nego sa 1/0
@@ -41,27 +41,27 @@ int main(int argc, char *args[])
         {
             switch (ev.type)
             {
-                case SDL_KEYDOWN:
+            case SDL_KEYDOWN:
+            {
+                switch (ev.key.keysym.sym)
                 {
-                    switch(ev.key.keysym.sym)
+                case SDLK_SPACE:
+                {
+                    if (!animacija_u_toku)
                     {
-                        case SDLK_SPACE:
-                        {
-                            if(!animacija_u_toku)
-                            {
-                                puts(tekstovi[brojacKoraka]);
-                                instrukcije[brojacKoraka] = true;
-                                brojacKoraka++;
-                            }
-                        }
+                        puts(tekstovi[brojacKoraka]);
+                        instrukcije[brojacKoraka] = true;
+                        brojacKoraka++;
                     }
-                    break;
                 }
-                case SDL_QUIT: // Event kliktanja na X dugme
-                {
-                    run = false;
-                    break;
                 }
+                break;
+            }
+            case SDL_QUIT: // Event kliktanja na X dugme
+            {
+                run = false;
+                break;
+            }
             }
         }
         // deltaTime (koji iz nekog razloga stvara probleme...)
@@ -72,7 +72,7 @@ int main(int argc, char *args[])
         lastTick = curTick;
     }
 
-    //system("PAUSE");
+    // system("PAUSE");
     return EXIT_SUCCESS;
 }
 
@@ -83,9 +83,10 @@ bool Initialize(void)
     // start();
     // getchar();
     // int izbor = selekcija();
-    
+    // system("cls");
+
     // Za pocetak, sve na false: videti dokumentaciju
-    for(int i = 0; i < 20; i++)
+    for (int i = 0; i < 20; i++)
     {
         instrukcije[i] = false;
     }
@@ -109,7 +110,6 @@ void Update(float elapsed)
     SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255); // "Clear Color"
     SDL_RenderClear(renderer);
 
-
     updateTrougao(renderer, elapsed, instrukcije, &animacija_u_toku);
 
     SDL_RenderPresent(renderer);
@@ -118,7 +118,7 @@ void Shutdown(void)
 {
     // Moze se desiti greska pre inicijalizacije windowa i renderera,
     // zato valja proveriti za svaki slucaj.
-    printc("Dovidjenja!\n",S_CRVENA);
+    printc("Dovidjenja!\n", S_CRVENA);
     if (renderer)
     {
         SDL_DestroyRenderer(renderer);

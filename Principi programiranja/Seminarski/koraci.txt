@@ -1,0 +1,9 @@
+0. START
+1. Pravougli
+2. Tupougli
+3. Ostrougli
+4. Jednakostranicni
+5. Jednakokraki
+6. Raznostrani
+7. START
+8. 

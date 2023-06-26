@@ -3,13 +3,14 @@
 
 #define SPEED 4.0f
 #define COLOR_SPEED 5
+#define POMOCNA 200.0f
 
 #include <stdio.h>
 #include "SDL2/SDL.h"
 #include "kki.h"
 #include "geometrija.h"
 
-static SDL_Color FULL_RED[3] = {{255, 0, 0, 0xFF}, {255, 0, 0, 0xFF}, {255, 0, 0, 0xFF}};
+static SDL_Color FULL_RED[3] = {{255, 0, 255, 0xFF}, {255, 0, 255, 0xFF}, {255, 0, 255, 0xFF}};
 static SDL_Color FULL_GREEN[3] = {{0, 255, 0, 0xFF}, {0, 255, 0, 0xFF}, {0, 255, 0, 0xFF}};
 static SDL_Color FULL_BLUE[3] = {{0, 0, 255, 0xFF}, {0, 0, 255, 0xFF}, {0, 0, 255, 0xFF}};
 

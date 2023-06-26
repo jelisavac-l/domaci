@@ -70,16 +70,26 @@ void updateTrougao(SDL_Renderer* renderer, float dT, bool* instrukcije, bool* an
     if(instrukcije[2]) {
         translacija(&tr[0].position, {320.0f, 0.0f}, dT, &instrukcije[2], anim);
     }
-    if(instrukcije[3]) {
-        promenaBojeTr(tr, FULL_RED, &instrukcije[3], anim);
+    
+    // Dalje...
+    if(instrukcije[3]) {    // Jednakostranicni
+        translacija(&tr[0].position, {320.0f, 51.0f}, dT, &instrukcije[3], anim);
+
+        translacija(&tr[1].position, {100.0f, 400.0f}, dT, &instrukcije[3], anim);
+
+        translacija(&tr[2].position, {540.0f, 400.0f}, dT, &instrukcije[3], anim);
     }
-    if(instrukcije[4]) {
-        promenaBojeTr(tr, FULL_GREEN, &instrukcije[4], anim);
-    }
-    if(instrukcije[5]) {
-        promenaBojeTr(tr, FULL_BLUE, &instrukcije[5], anim);
+
+    if(instrukcije[4]) {    // Jednakokraki
+        translacija(&tr[1].position, {100.0f, 480.0f}, dT, &instrukcije[4], anim);
+        translacija(&tr[2].position, {540.0f, 480.0f}, dT, &instrukcije[4], anim);
     }
     
+    if(instrukcije[5]) {    // Rikverc
+        translacija(&tr[1].position, {100.0f, 400.0f}, dT, &instrukcije[5], anim);
+        translacija(&tr[2].position, {540.0f, 400.0f}, dT, &instrukcije[5], anim);
+    }
+
     if(SDL_RenderGeometry(renderer, NULL, tr, 3, NULL, 0) < 0 )
     {
         SDL_Log("%s\n", SDL_GetError());
