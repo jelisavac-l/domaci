@@ -111,7 +111,8 @@ void Update(float elapsed)
     SDL_RenderClear(renderer);
 
     updateTrougao(renderer, elapsed, instrukcije, &animacija_u_toku);
-
+    SDL_SetRenderDrawColor(renderer, 255, 0, 0, 255);
+    SDL_RenderDrawLine(renderer, 10, 10, 200, 200);
     SDL_RenderPresent(renderer);
 }
 void Shutdown(void)
